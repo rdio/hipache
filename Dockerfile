@@ -14,11 +14,19 @@
 # Latest Ubuntu LTS
 from    ubuntu:14.04
 
+#nodejs 0.12
+run apt-get install -y software-properties-common
+
+run apt-add-repository -y ppa:rwky/nodejs
+
 # Update
 run apt-get -y update
 
 # Install node and npm
-run apt-get -y install nodejs npm
+run apt-get -y install nodejs
+
+# and git
+run apt-get -o Apt-Get::Install-Reccomends=no -y install git
 
 # Manually add Hipache folder
 run mkdir ./hipache
@@ -26,6 +34,7 @@ add . ./hipache
 
 # Then install it
 run npm install -g ./hipache --production
+#run npm install -g ./hipache/node_modules/http-parser-js
 
 # This is provisional, as we don't honor it yet in Hipache
 env NODE_ENV production
@@ -37,4 +46,4 @@ RUN mkdir -p /var/log/hipache
 expose  80
 
 # Start supervisor
-cmd [ "/usr/local/bin/hipache", "-c", "/usr/local/lib/node_modules/hipache/config/config.json" ]
+cmd [ "/usr/bin/hipache", "-c", "/usr/lib/node_modules/hipache/config/config.json" ]

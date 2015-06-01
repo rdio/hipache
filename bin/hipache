@@ -3,6 +3,10 @@
 
 'use strict';
 
+var myparser = process.binding("http_parser").HTTPParser = require('http-parser-js').HTTPParser
+
+myparser.methods.push('PUSH');
+
 var fs = require('fs'),
     path = require('path'),
     cluster = require('cluster'),

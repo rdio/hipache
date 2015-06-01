@@ -1,3 +1,12 @@
+WARNING! This branch has hacks on top of standard hipache
+=========================================================
+
+ * Updated http-node-proxy in package.json
+ * http-parser-js in package.json
+ * monkeypatching http-parser-js in bin/hipache
+ * adding PUSH to method list
+ * Dockerfile uses nodejs PPA and updates nodejs to 0.12
+
 Hipache: a Distributed HTTP and WebSocket Proxy
 ===============================================
 
